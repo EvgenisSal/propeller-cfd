@@ -1,0 +1,47 @@
+# --- OpenFOAM time directories (κραταμε μονο 0.orig/) ---
+[1-9]*/
+0/
+0.[0-9]*/
+-[0-9]*/
+
+# --- Mesh (regenerated απο blockMesh/snappyHexMesh) ---
+polyMesh/
+extendedFeatureEdgeMesh/
+*.eMesh
+
+# --- Parallel ---
+processor*/
+
+# --- Logs ---
+log.*
+*.log
+
+# --- ParaView ---
+*.foam
+*.OpenFOAM
+*.pvsm
+*.pvd
+VTK/
+
+# --- Geometry (μεγαλα binaries + licensing) ---
+*.stl
+*.stl.gz
+*.obj
+*.obj.gz
+*.iges
+*.igs
+*.step
+*.stp
+
+# --- macOS ---
+.DS_Store
+
+# --- postProcessing: κραταμε τα δεδομενα (forces, residuals) ---
+# Η εξαιρεση πρεπει να ειναι ΜΕΤΑ το "0/" παραπανω, αλλιως το 0/ τρωει
+# το postProcessing/forceCoeffs1/0/coefficient.dat
+!**/postProcessing/**
+
+# ...αλλα οχι το βαρυ visualization output (212MB, αναγεννωμενο)
+**/postProcessing/ensightWrite/
+**/postProcessing/sets/
+**/postProcessing/cuttingPlane/
