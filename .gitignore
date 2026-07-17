@@ -47,3 +47,5 @@ VTK/
 **/postProcessing/cuttingPlane/
 **/constant/triSurface/
 propeller/geometry/
+__pycache__/
+*.pyc
