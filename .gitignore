@@ -45,3 +45,5 @@ VTK/
 **/postProcessing/ensightWrite/
 **/postProcessing/sets/
 **/postProcessing/cuttingPlane/
+**/constant/triSurface/
+propeller/geometry/
