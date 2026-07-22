@@ -36,7 +36,7 @@ The steady frozen-rotor MRF solution reproduces the propeller's **efficiency** a
 
    *Slice through the blade disc showing the localised refinement: a cylinder around the propeller at level 3, the blade surface at 3–4, and the trailing edges at level 4, with the background size everywhere else. At least three cells of equal size sit between levels so transitions are gradual. Shown at the castellation-and-snapping stage with layers switched off (216 k cells); the final mesh with tip refinement and layers reaches 277 k.*
 
-3. **Solve.** Incompressible RANS, k-ω SST, MRF frozen-rotor, `simpleFoam`. A cylindrical zone enclosing the blades rotates at the propeller speed while the outer domain stays stationary; the blades, hub and shaft are a single no-slip patch. Forces and moments are integrated over that patch.
+3. **Solve.** Incompressible RANS, k-ω SST, MRF frozen-rotor, `simpleFoam`. A cylindrical zone enclosing the blades rotates at the propeller speed while the outer domain stays stationary; the blades, hub and shaft are a single no-slip patch. Forces and moments are integrated over that patch. Wall treatment operated in the high-Re (wall-function) regime, with blade y+ spanning roughly 6-1400 (average ~93); the elevated y+ toward the blade tips is consistent with the under-resolved tip vortex identified as the dominant residual error.
 
 4. **Error investigation.** Five candidate causes of the overprediction were tested and each eliminated or bounded (see table below).
 
