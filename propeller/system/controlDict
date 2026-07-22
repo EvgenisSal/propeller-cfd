@@ -26,3 +26,22 @@ timeFormat      general;
 timePrecision   6;
 
 runTimeModifiable true;
+
+functions
+{
+    forces
+    {
+        type            forces;
+        libs            ("libforces.so");   // η βιβλιοθηκη που το παρεχει
+
+        patches         (propeller);        // σε ποιο patch μετραμε δυναμεις
+
+        rho             rhoInf;             // σταθερη πυκνοτητα (incompressible)
+        rhoInf          999;                // πυκνοτητα νερου kg/m^3
+
+        CofR            (0 0 0);            // Center of Rotation = κεντρο δισκου
+
+        writeControl    timeStep;
+        writeInterval   1;                  // γραψε σε καθε iteration
+    }
+}

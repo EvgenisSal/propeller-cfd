@@ -1,0 +1,35 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      omega;
+}
+
+dimensions      [0 0 -1 0 0 0 0];    // 1/s
+
+internalField   uniform 3.6;         // omega = sqrt(k)/(Cmu^0.25 * L), L=0.1D
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 3.6;
+    }
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.6;
+        value           uniform 3.6;
+    }
+    farfield
+    {
+        type            slip;
+    }
+    propeller
+    {
+        type            omegaWallFunction;   // wall function για omega
+        value           uniform 3.6;
+    }
+}

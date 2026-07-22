@@ -1,0 +1,22 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      MRFProperties;
+}
+
+MRF1
+{
+    cellZone    MRFzone;        // η ζωνη που περιστρεφεται
+    active      yes;
+
+    // patches που ΔΕΝ περιστρεφονται μαζι με τη ζωνη.
+    // Καν ενα - το propeller ειναι toιχος που ΟΝΤΩΣ περιστρεφεται,
+    // οποτε η λιστα ειναι κενη.
+    nonRotatingPatches ();
+
+    origin      (0 0 0);        // κεντρο περιστροφης (κεντρο δισκου)
+    axis        (1 0 0);        // αξονας X (φορα ροης +X)
+    omega       94.25;          // γωνιακη ταχυτητα rad/s = 2*pi*15
+}

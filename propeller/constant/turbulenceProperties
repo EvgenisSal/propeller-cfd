@@ -1,0 +1,16 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      turbulenceProperties;
+}
+
+simulationType  RAS;      // Reynolds-Averaged Simulation (steady turbulence)
+
+RAS
+{
+    RASModel        kOmegaSST;   // το μοντελο που επιλεξαμε
+    turbulence      on;          // ενεργο turbulence
+    printCoeffs     on;          // τυπωσε τους συντελεστες στην αρχη
+}

@@ -1,0 +1,27 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+actions
+(
+    {
+        name    MRFzone;
+        type    cellSet;
+        action  new;
+        source  cylinderToCell;
+        p1      (-0.10 0 0);      // upstream, καθαρο
+        p2      ( 0.16 0 0);      // > xmax προπελας (0.134) + margin
+        radius  0.14;             // > R_prop (0.125)
+    }
+    {
+        name    MRFzone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        set     MRFzone;
+    }
+);

@@ -49,3 +49,6 @@ VTK/
 propeller/geometry/
 __pycache__/
 *.pyc
+
+# --- backup meshes (polyMesh.79pct, .nolayers κλπ) ---
+polyMesh.*/

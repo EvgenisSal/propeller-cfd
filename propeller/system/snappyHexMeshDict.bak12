@@ -47,7 +47,7 @@ castellatedMeshControls
     {
         propeller
         {
-            level           ( 3 5 );
+            level           ( 3 4 );
         }
     }
     resolveFeatureAngle 30;
@@ -77,25 +77,25 @@ snapControls
 
 addLayersControls
 {
-    relativeSizes   true;
+    relativeSizes   false;
     layers
     {
         "propeller.*"
         {
-            nSurfaceLayers  3;
+            nSurfaceLayers  2;
         }
     }
     expansionRatio  1.1;
-    firstLayerThickness 0.3;
-    minThickness    0.05;
+    firstLayerThickness 0.00015;
+    minThickness    3e-05;
     nGrow           0;
-    featureAngle    170;
-    nRelaxIter      8;
+    featureAngle    130;
+    nRelaxIter      5;
     nSmoothSurfaceNormals 1;
     nSmoothNormals  3;
     nSmoothThickness 10;
     maxFaceThicknessRatio 0.5;
-    maxThicknessToMedialRatio 0.6;
+    maxThicknessToMedialRatio 0.3;
     minMedialAxisAngle 90;
     nBufferCellsNoExtrude 0;
     nLayerIter      50;
