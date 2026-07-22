@@ -7,6 +7,13 @@ A validated open-water CFD study of the SVA Potsdam **PPTC VP1304** controllable
 
 Full write-up: [`propeller/PPTC_VP1304_CFD_report.md`](propeller/PPTC_VP1304_CFD_report.md)
 
+**At a glance:**
+- Steady RANS in OpenFOAM (`simpleFoam`, k-ω SST, MRF frozen-rotor)
+- Validation against SVA Potsdam open-water experimental data
+- Custom Python tooling for geometry verification and figure generation
+- Systematic mesh, near-wall, and boundary-condition sensitivity study
+- Honest treatment of hardware and method limits, not just a headline number
+
 ---
 
 ## Headline result
@@ -23,13 +30,13 @@ The steady frozen-rotor MRF solution reproduces the propeller's **efficiency** a
 
    ![Pitch verification](propeller/fig1_pitch.png)
 
-2. **Meshing.** `blockMesh` background with `snappyHexMesh` (feature capture, surface refinement, three prism layers). Prism-layer coverage was raised from 12 % to 79 %; final mesh 277 k cells, close to the 8 GB ceiling.
+2. **Meshing.** `blockMesh` background with `snappyHexMesh` (feature capture, surface refinement, three prism layers). Prism-layer coverage was raised from 12 % to 79 %; final mesh 277 k cells. The cell count was kept deliberately within what 8 GB can solve comfortably rather than pushed to the limit.
 
    ![Mesh refinement on the blade-disc plane](propeller/mesh_images/mesh_slice.png)
 
    *Slice through the blade disc showing the localised refinement: a cylinder around the propeller at level 3, the blade surface at 3–4, and the trailing edges at level 4, with the background size everywhere else. At least three cells of equal size sit between levels so transitions are gradual. Shown at the castellation-and-snapping stage with layers switched off (216 k cells); the final mesh with tip refinement and layers reaches 277 k.*
 
-3. **Solve.** Incompressible RANS, k-ω SST, MRF frozen-rotor, `simpleFoam`. Forces and moments integrated over the propeller patch.
+3. **Solve.** Incompressible RANS, k-ω SST, MRF frozen-rotor, `simpleFoam`. A cylindrical zone enclosing the blades rotates at the propeller speed while the outer domain stays stationary; the blades, hub and shaft are a single no-slip patch. Forces and moments are integrated over that patch.
 
 4. **Error investigation.** Five candidate causes of the overprediction were tested and each eliminated or bounded (see table below).
 
@@ -102,7 +109,7 @@ python3 pitch_verify.py constant/triSurface/propeller.stl
 
 ## Tools
 
-OpenFOAM v2606 · ParaView 6.1.1 · Python (matplotlib, numpy) · FreeCAD (STEP to STL) · macOS, MacBook M2, 8 GB RAM.
+OpenFOAM v2606 · ParaView 6.1.1 · Python (matplotlib, numpy) · FreeCAD (headless STEP-to-STL conversion) · macOS, MacBook M2, 8 GB RAM.
 
 ## Data and licensing
 
