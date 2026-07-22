@@ -25,6 +25,10 @@ The steady frozen-rotor MRF solution reproduces the propeller's **efficiency** a
 
 2. **Meshing.** `blockMesh` background with `snappyHexMesh` (feature capture, surface refinement, three prism layers). Prism-layer coverage was raised from 12 % to 79 %; final mesh 277 k cells, close to the 8 GB ceiling.
 
+   ![Mesh refinement on the blade-disc plane](propeller/mesh_images/mesh_slice.png)
+
+   *Slice through the blade disc showing the localised refinement: a cylinder around the propeller at level 3, the blade surface at 3–4, and the trailing edges at level 4, with the background size everywhere else. At least three cells of equal size sit between levels so transitions are gradual. Shown at the castellation-and-snapping stage with layers switched off (216 k cells); the final mesh with tip refinement and layers reaches 277 k.*
+
 3. **Solve.** Incompressible RANS, k-ω SST, MRF frozen-rotor, `simpleFoam`. Forces and moments integrated over the propeller patch.
 
 4. **Error investigation.** Five candidate causes of the overprediction were tested and each eliminated or bounded (see table below).
